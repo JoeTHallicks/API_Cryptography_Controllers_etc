@@ -1,0 +1,22 @@
+using DistSysAcw.Cryptography;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+
+namespace DistSysAcw
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            RsaCryptography.GetRsaInstance();
+            CreateHostBuilder(args).Build().Run();
+        }
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
+    }
+}
